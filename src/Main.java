@@ -4,14 +4,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
 
         double userUpperY = 180;
-        double userLowerY = 179;
-        double userLeftX = 359;
+        double userLowerY = 150;
+        double userLeftX = 245;
         double userRightX = 360;
         String writeThis = "";
 
@@ -21,12 +22,8 @@ public class Main {
         openFile(allLocations);
 
 
-        for (Location location : allLocations) {
-            if ((location.getxValue() >= userLeftX && location.getxValue() <= userRightX) && (location.getyValue() >= userLowerY && location.getyValue() <= userUpperY)) {
-                outputLocations.add(location);
-
-            }
-        }
+        outputLocations.addAll(allLocations.stream().filter(location -> (location.getxValue() >= userLeftX && location.getxValue()
+                <= userRightX) && (location.getyValue() >= userLowerY && location.getyValue() <= userUpperY)).collect(Collectors.toList()));
 
         for (Location location : outputLocations) {
             writeThis += Double.toString(location.getxValue()) + "," + Double.toString(location.getyValue()) + "," + Double.toString(location.getData()) + "\n";
