@@ -11,9 +11,9 @@ public class Main {
         openFile(allLocations);
 
 
-        System.out.println("X Value = " + allLocations.get(0).xValue);
-        System.out.println("Y Value = " + allLocations.get(0).yValue);
-        System.out.println("The data for this location = " + allLocations.get(0).data);
+        System.out.println("X Value = " + allLocations.get(500000).xValue);
+        System.out.println("Y Value = " + allLocations.get(500000).yValue);
+        System.out.println("The data for this location = " + allLocations.get(500000).data);
 
     }
 
