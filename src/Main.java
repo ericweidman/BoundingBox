@@ -7,13 +7,22 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
 
+        double userUpperY = 180;
+        double userLowerY = 0;
+        double userLeftX = 0;
+        double userRightX= 360;
+
+        ArrayList<Location> outputLocations = new ArrayList<>();
         ArrayList<Location> allLocations = new ArrayList<>();
         openFile(allLocations);
 
 
-        System.out.println("X Value = " + allLocations.get(500000).xValue);
-        System.out.println("Y Value = " + allLocations.get(500000).yValue);
-        System.out.println("The data for this location = " + allLocations.get(500000).data);
+        for (Location location : allLocations) {
+            if((location.getxValue() >= userLeftX && location.getxValue() <= userRightX) && (location.getyValue() >= userLowerY && location.getyValue() <= userUpperY )){
+             outputLocations.add(location);
+            }
+        }
+        System.out.println(outputLocations.size());
 
     }
 
