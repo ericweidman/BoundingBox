@@ -1,3 +1,4 @@
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -16,11 +17,14 @@ public class Main {
         double userRightX = 360;
         String writeThis = "";
 
+        SwingControl swingControl = new SwingControl();
+        swingControl.prepareGUI();
+        swingControl.showEvent();
+
 
         ArrayList<Location> outputLocations = new ArrayList<>();
         ArrayList<Location> allLocations = new ArrayList<>();
         openFile(allLocations);
-
 
         outputLocations.addAll(allLocations.stream().filter(location -> (location.getxValue() >= userLeftX && location.getxValue()
                 <= userRightX) && (location.getyValue() >= userLowerY && location.getyValue() <= userUpperY)).collect(Collectors.toList()));
@@ -31,6 +35,7 @@ public class Main {
         }
         saveFile("query_results.txt", writeThis);
     }
+
 
 
     static void openFile(ArrayList<Location> allLocations) throws FileNotFoundException {
@@ -50,4 +55,6 @@ public class Main {
         fw.write(fileContent);
         fw.close();
     }
+
+
 }
